@@ -1,5 +1,6 @@
 import ipaddress
 
+
 class Entry:
     def __init__(self, address, available, last_used):
         """
@@ -23,15 +24,8 @@ class Entry:
     def __ne__(self, other):
         return self.dot_to_decimal(self.address) != self.dot_to_decimal(other.address)
 
-    def __lt__(self,other):
+    def __lt__(self, other):
         return self.dot_to_decimal(self.address) < self.dot_to_decimal(other.address)
-    #
-    # def __le__(self,other):
-    #     return self.dot_to_decimal(self.address) <= self.dot_to_decimal(other.address)
 
-    def __gt__(self,other):
+    def __gt__(self, other):
         return self.dot_to_decimal(self.address) > self.dot_to_decimal(other.address)
-    #
-    # def __ge__(self,other):
-    #     return self.dot_to_decimal(self.address) <= self.dot_to_decimal(other.address)
-

@@ -1,4 +1,6 @@
 venv/
 .idea
 __pycache__
-
+data_structures/__pycache__
+test/__pycache__
+exceptions/__pycache__

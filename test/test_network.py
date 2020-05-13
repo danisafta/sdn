@@ -30,5 +30,6 @@ class TestNetworkCollection(unittest.TestCase):
         self.assertFalse(self.n.belong_to_network("192.168.101.1", "192.0.0.0/10"))
         self.assertFalse(self.n.belong_to_network("192.168.101.1", "192.168.100.0/32"))
 
+
 if __name__ == "__main__":
     unittest.main()
