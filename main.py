@@ -18,14 +18,14 @@ def get_data(url, max_retries=5, delay_between_retries=1):
     Returns:
         data (dict)
     """
-    for i in range(5):
+    for i in range(max_retries):
         try:
             raw = requests.get(url=url)
             data = raw.json()
             return data
         except:
             print("Exception occured on " + str(i+1) +" attempt to fetch data")
-            time.sleep(1)
+            time.sleep(delay_between_retries)
     raise ConnectionError
 
 def main():
