@@ -24,8 +24,6 @@ class NetworkCollection:
         valid_entries = []
         for entry in self.entries:
             if self.match_ip_pattern(entry.address) and self.belong_to_network(entry.address, self.ipv4_network):
-                print(self.ipv4_network)
-                print(entry.address)
                 valid_entries.append(entry)
         self.entries = valid_entries
 
