@@ -42,6 +42,15 @@ def main():
         for key, value in data.items()
     ]
 
+    for d in datacenters:
+        print(d.name)
+        print("BEFORE")
+        for cluster in d.clusters:
+            print(cluster.name)
+        d.remove_invalid_clusters()
+        print("AFTER")
+        for cluster in d.clusters:
+            print(cluster.name)
 
 if __name__ == '__main__':
     main()

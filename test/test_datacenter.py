@@ -22,8 +22,14 @@ class TestDatacenter(unittest.TestCase):
             self.assertIsInstance(dc.clusters[0], Cluster)
 
     def test_remove(self):
-        pass
-
+        for dc in self.datacenters:
+            clusters_before = dc.clusters
+            dc.remove_invalid_clusters()
+            clusters_after = dc.clusters
+            self.assertGreaterEqual(len(clusters_before), len(clusters_after))
+        for dc in self.datacenters:
+            for cluster in dc.clusters:
+                self.assertEqual(dc.name[:3].upper(),cluster.name[:3])
 
 if __name__ == "__main__":
     unittest.main()
