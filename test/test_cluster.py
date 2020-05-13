@@ -22,12 +22,6 @@ class TestCluster(unittest.TestCase):
                 self.assertIsInstance(cluster.name, str)
                 self.assertIsInstance(cluster.networks, list)
 
-    def test_remove(self):
-        pass
-
-    def test_networks(self):
-        pass
-
 
 if __name__ == "__main__":
     unittest.main()
