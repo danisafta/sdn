@@ -8,3 +8,7 @@ before_install:
 install:
   - pip install -r requirements.txt # install package + test dependencies
 script: python -m unittest # run tests
+env:
+  - CODECOV_TOKEN="7ec554d8-6bb4-4372-97f3-96f168ad9d7e"
+after_success:
+  - codecov # submit coverage
