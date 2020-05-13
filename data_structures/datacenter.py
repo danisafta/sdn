@@ -1,6 +1,7 @@
 from data_structures.cluster import Cluster
 import re
 
+
 class Datacenter:
     def __init__(self, name, cluster_dict):
         """
@@ -17,11 +18,24 @@ class Datacenter:
         """
         Removes invalid objects from the clusters list.
         """
-        first3_upper = self.name[:3].upper()
-        pattern = '^' + first3_upper +'-\d{1,3}$'
-        c_pattern = re.compile(pattern)
+
         valid_clusters = []
+
         for cluster in self.clusters:
-            if c_pattern.match(cluster.name):
+            if self.match_name_pattern(cluster.name):
                 valid_clusters.append(cluster)
+
         self.clusters = valid_clusters
+
+    def match_name_pattern(self, name):
+        """
+        Args:
+            name: datacenter name
+
+        Returns: true if name matches first 3 letters of the parrent, a dash and a number <= 999
+
+        """
+        first3_upper = self.name[:3].upper()
+        pattern = '^' + first3_upper + '\-\d{1,3}$'
+        c_pattern = re.compile(pattern)
+        return c_pattern.match(name) is not None
