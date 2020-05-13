@@ -1,5 +1,7 @@
 from data_structures.datacenter import Datacenter
-
+from exceptions.connection_exception import ConnectionError
+import time
+import requests
 
 URL = "http://www.mocky.io/v2/5e539b332e00007c002dacbe"
 
@@ -16,8 +18,15 @@ def get_data(url, max_retries=5, delay_between_retries=1):
     Returns:
         data (dict)
     """
-    pass  # the rest of your logic here
-
+    for i in range(5):
+        try:
+            raw = requests.get(url=url)
+            data = raw.json()
+            return data
+        except:
+            print("Exception occured on " + str(i+1) +" attempt to fetch data")
+            time.sleep(1)
+    raise ConnectionError
 
 def main():
     """
@@ -25,7 +34,6 @@ def main():
     """
 
     data = get_data(URL)
-
     if not data:
         raise ValueError('No data to process')
 
@@ -33,8 +41,6 @@ def main():
         Datacenter(key, value)
         for key, value in data.items()
     ]
-
-    pass  # the rest of your logic here
 
 
 if __name__ == '__main__':
